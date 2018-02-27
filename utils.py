@@ -7,10 +7,10 @@ def sort_images_bydatetaken(files):
     for index, file in enumerate(files):
         try:
             image = Image.open(file)
-            xf = image._getexif()
-            print(xf)
+            xf = image._getexif()[36867]
             exifs.append(xf)
         except OSError:
+            exifs.append('')
             print('Skipping {}'.format(file))
     sorted_files = [x for _, x in sorted(zip(exifs, files))]
     return sorted_files
@@ -22,7 +22,7 @@ def get_groups(bit_diffs, threshold):
     A sequence in considered of interest if
     - succesive elements differ no more than the threshold
     - no element is bigger than the threshold
-    - it contains at least 5 element
+    - it contains at least 5 elements
     Each group is a dict with keys:
     - "values": holds the bit_diffs
     - "start_index": holds the index of the first value on the bit_diffs list
