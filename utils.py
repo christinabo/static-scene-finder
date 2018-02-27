@@ -1,5 +1,4 @@
 from PIL import Image
-from PIL.ExifTags import TAGS
 
 
 def sort_images_bydatetaken(files):
