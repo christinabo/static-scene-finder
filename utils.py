@@ -34,7 +34,7 @@ def get_groups(bit_diffs, threshold):
         if abs(x - groups[-1].get("values")[-1]) < threshold:
             groups[-1]["values"].append(x)
         else:
-            groups.append({"start_index": index, "values": [x]})
+            groups.append({"start_index": index+1, "values": [x]})
 
     # keep just the sequences that satisfy our conditions
     keep_groups = [group for group in groups
